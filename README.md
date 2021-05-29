@@ -1,1 +1,2 @@
-- tsRPG
+- tsRPG 
+Typescript RPG engine
