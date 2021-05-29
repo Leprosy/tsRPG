@@ -1,0 +1,23 @@
+{
+  "name": "rpg",
+  "version": "1.0.0",
+  "description": "rpg game",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest --coverage=true",
+    "ts": "npx tsc",
+    "server": "npx parcel build/index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "jest": "^26.6.3",
+    "parcel": "^1.12.4",
+    "ts-jest": "^26.5.1",
+    "typescript": "^4.1.5"
+  },
+  "dependencies": {
+    "actor": "0.0.2"
+  }
+}
