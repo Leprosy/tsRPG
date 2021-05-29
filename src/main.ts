@@ -131,31 +131,30 @@ const Main = new RPG();
 
 // FIXME: This is for debug only
 const eventFunc = {
-  "ArrowUp": () => {
+  ArrowUp: () => {
     Main.forward();
     Main.drawMap();
   },
-  "ArrowDown": () => {
+  ArrowDown: () => {
     Main.back();
     Main.drawMap();
   },
-  "ArrowLeft": () => {
+  ArrowLeft: () => {
     Main.rotateLeft();
     Main.drawMap();
   },
-  "ArrowRight": () => {
+  ArrowRight: () => {
     Main.rotateRight();
     Main.drawMap();
   },
-  "Space": () => {
+  Space: () => {
     Main.action();
-  }
-}
+  },
+};
 
 window.addEventListener("keyup", (event) => {
-  console.log("Key pressed:", event.code) {
-    eventFunc[event.code]();
-  }
+  console.log("Key pressed:", event.code);
+  //eventFunc[event.code]();
 });
 
 Main.drawMap();
