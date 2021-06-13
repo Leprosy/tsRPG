@@ -123,6 +123,8 @@ class RPG {
       content += `${y} - ${rowString}\n`;
     }
 
+    content += `\nP1: ${this.player.x}-${this.player.y}`;
+
     document.getElementsByTagName("textarea")[0].innerHTML = content;
   }
 }
@@ -130,22 +132,18 @@ class RPG {
 const Main = new RPG();
 
 // FIXME: This is for debug only
-const eventFunc = {
+const eventFunc: { [item: string]: () => void } = {
   ArrowUp: () => {
     Main.forward();
-    Main.drawMap();
   },
   ArrowDown: () => {
     Main.back();
-    Main.drawMap();
   },
   ArrowLeft: () => {
     Main.rotateLeft();
-    Main.drawMap();
   },
   ArrowRight: () => {
     Main.rotateRight();
-    Main.drawMap();
   },
   Space: () => {
     Main.action();
@@ -153,8 +151,14 @@ const eventFunc = {
 };
 
 window.addEventListener("keyup", (event) => {
-  console.log("Key pressed:", event.code);
-  //eventFunc[event.code]();
+  console.log("Key pressed is:", event.code);
+  const f = eventFunc[event.code];
+
+  if (typeof f === "function") {
+    eventFunc[event.code]();
+  }
+
+  Main.drawMap();
 });
 
 Main.drawMap();

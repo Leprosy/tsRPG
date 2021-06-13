@@ -74,3 +74,19 @@ test("Same positions", () => {
 test("Different positions", () => {
   expect(P.samePosition(M2)).toBe(false);
 });
+
+test("Rotation should not mess with calculations", () => {
+  P.set({ x: 5, y: 5, ang: 0 });
+
+  for (let i = 0; i < 4; ++i) {
+    P.set(P.getFront());
+  }
+
+  P.rotateRight();
+  expect(P.getFront()).toStrictEqual({ x: 6, y: 1 });
+  expect(P.getBack()).toStrictEqual({ x: 4, y: 1 });
+  P.rotateLeft();
+  P.rotateLeft();
+  expect(P.getBack()).toStrictEqual({ x: 6, y: 1 });
+  expect(P.getFront()).toStrictEqual({ x: 4, y: 1 });
+});

@@ -13,6 +13,10 @@ export class Player extends Actor {
     super(attr);
   }
 
+  set(attr: Partial<Player>) {
+    super.set(attr);
+  }
+
   rotateRight() {
     this.ang = (this.ang + Math.PI / 2) % (2 * Math.PI);
   }
@@ -26,14 +30,14 @@ export class Player extends Actor {
   }
 
   getBack(): Position {
-    let nx = this.x - Math.sin(this.ang);
-    let ny = this.y + Math.cos(this.ang);
+    let nx = Math.round(this.x - Math.sin(this.ang));
+    let ny = Math.round(this.y + Math.cos(this.ang));
     return { x: nx, y: ny };
   }
 
   getFront(): Position {
-    let nx = this.x + Math.sin(this.ang);
-    let ny = this.y - Math.cos(this.ang);
+    let nx = Math.round(this.x + Math.sin(this.ang));
+    let ny = Math.round(this.y - Math.cos(this.ang));
     return { x: nx, y: ny };
   }
 
